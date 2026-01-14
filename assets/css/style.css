@@ -1,0 +1,223 @@
+/* ============================
+   GLOBAL DESIGN SYSTEM
+============================ */
+
+:root {
+  --primary-color: #4f46e5;
+  --secondary-color: #0f172a;
+  --accent-color: #38bdf8;
+  --bg-light: #f8fafc;
+  --bg-dark: #020617;
+  --text-dark: #020617;
+  --text-light: #f8fafc;
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.15);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  line-height: 1.7;
+}
+
+/* ============================
+   NAVBAR (GLASS EFFECT)
+============================ */
+
+.glass-navbar {
+  background: var(--glass-bg);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: var(--text-light) !important;
+}
+
+.nav-link {
+  color: var(--text-light) !important;
+  margin-left: 1rem;
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: var(--accent-color);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* ============================
+   HERO SECTION
+============================ */
+
+.hero-section {
+  height: 100vh;
+  background: linear-gradient(120deg, #020617, #020617 40%, #1e1b4b);
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.hero-title span {
+  color: var(--accent-color);
+}
+
+.hero-subtitle {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.hero-buttons {
+  margin-top: 2rem;
+}
+
+.hero-buttons .btn {
+  margin: 0 0.5rem;
+  padding: 0.7rem 1.8rem;
+  border-radius: 50px;
+}
+
+/* ============================
+   SECTIONS
+============================ */
+
+.section {
+  padding: 90px 0;
+}
+
+.section-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.section-text {
+  max-width: 800px;
+  margin: auto;
+  text-align: center;
+  opacity: 0.85;
+}
+
+.bg-light {
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+}
+
+/* ============================
+   CARDS & COMPONENTS
+============================ */
+
+.card {
+  border-radius: 16px;
+  border: none;
+}
+
+.timeline {
+  list-style: none;
+  max-width: 700px;
+  margin: auto;
+}
+
+.timeline li {
+  padding: 1rem 0;
+  border-left: 3px solid var(--primary-color);
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.service-card,
+.project-card {
+  background: #ffffff;
+  color: var(--text-dark);
+  border-radius: 18px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover,
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+}
+
+/* ============================
+   CONTACT FORM
+============================ */
+
+.contact-form {
+  max-width: 600px;
+  margin: auto;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+}
+
+.contact-form button {
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 50px;
+}
+
+/* ============================
+   FOOTER
+============================ */
+
+.footer {
+  padding: 1.5rem 0;
+  background-color: #020617;
+  border-top: 1px solid var(--glass-border);
+}
+
+.footer p {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+/* ============================
+   RESPONSIVE
+============================ */
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.2rem;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+}
