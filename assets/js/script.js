@@ -116,16 +116,18 @@ document.getElementById('contactForm').addEventListener('submit', async function
     btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending...';
     btn.disabled = true;
     
+    // Initialize EmailJS with your public key
+    emailjs.init('yXA_MBDvQ3p9d3GSL'); // Replace with your actual public key from EmailJS
+    
     const formData = {
         from_name: this.name.value,
         from_email: this.email.value,
         subject: this.subject.value,
-        message: this.message.value,
-        to_email: 'naavviinn001@gmail.com'
+        message: this.message.value
     };
     
-    // Replace with your actual EmailJS credentials
-    emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', formData)
+    // Send email using EmailJS
+    emailjs.send('service_3s3vkrs', 'template_3i9kyqj', formData)
         .then(() => {
             alert('✅ Message sent successfully! I will get back to you soon.');
             this.reset();
