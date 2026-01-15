@@ -1,130 +1,201 @@
-// 1. Initialize Libraries
-AOS.init({
-    once: true,
-    offset: 100,
-    duration: 800,
-});
-
-VanillaTilt.init(document.querySelector(".tilt-effect"), {
-    max: 15,
-    speed: 400,
-    glare: true,
-    "max-glare": 0.5,
-});
-
-// 2. Preloader
-window.addEventListener("load", () => {
-    const preloader = document.getElementById("preloader");
-    setTimeout(() => {
-        preloader.style.opacity = "0";
-        setTimeout(() => {
-            preloader.style.display = "none";
-        }, 500);
-    }, 1500);
-});
-
-// 3. Custom Cursor Logic (Only runs if mouse is detected)
-const cursorDot = document.querySelector("[data-cursor-dot]");
-const cursorOutline = document.querySelector("[data-cursor-outline]");
-
-// Helper function to check if device has a mouse
-function isDesktop() {
-    return window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-}
-
-if (isDesktop()) {
-    window.addEventListener("mousemove", function(e) {
-        const posX = e.clientX;
-        const posY = e.clientY;
-
-        cursorDot.style.left = `${posX}px`;
-        cursorDot.style.top = `${posY}px`;
-
-        cursorOutline.animate({
-            left: `${posX}px`,
-            top: `${posY}px`
-        }, { duration: 500, fill: "forwards" });
-    });
-
-    // Hover effect for cursor
-    const links = document.querySelectorAll('a, button, input, textarea');
-    links.forEach(link => {
-        link.addEventListener('mouseenter', () => {
-            cursorOutline.style.transform = "translate(-50%, -50%) scale(1.5)";
-            cursorOutline.style.backgroundColor = "rgba(255, 255, 255, 0.1)";
-            cursorOutline.style.borderColor = "transparent";
-        });
-        link.addEventListener('mouseleave', () => {
-            cursorOutline.style.transform = "translate(-50%, -50%) scale(1)";
-            cursorOutline.style.backgroundColor = "transparent";
-            cursorOutline.style.borderColor = "var(--text-secondary)";
-        });
-    });
-}
-
-// 4. Theme Toggle
-const themeBtn = document.getElementById('theme-toggle');
-const html = document.documentElement;
-const icon = themeBtn.querySelector('i');
-
-// Check local storage
-if(localStorage.getItem('theme') === 'light') {
-    html.setAttribute('data-theme', 'light');
-    icon.classList.remove('fa-moon');
-    icon.classList.add('fa-sun');
-}
-
-themeBtn.addEventListener('click', () => {
+// Theme Toggle
+function toggleTheme() {
+    const html = document.documentElement;
+    const icon = document.getElementById('theme-icon');
     const currentTheme = html.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
     
-    html.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    
-    if(newTheme === 'light'){
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
+    if (currentTheme === 'dark') {
+        html.removeAttribute('data-theme');
+        icon.className = 'fas fa-moon';
+        localStorage.setItem('theme', 'light');
     } else {
-        icon.classList.remove('fa-sun');
-        icon.classList.add('fa-moon');
+        html.setAttribute('data-theme', 'dark');
+        icon.className = 'fas fa-sun';
+        localStorage.setItem('theme', 'dark');
+    }
+}
+
+// Load saved theme
+window.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        document.getElementById('theme-icon').className = 'fas fa-sun';
     }
 });
 
-// 5. EmailJS Integration
-(function() {
-    // -------------------------------------------------------------------
-    // IMPORTANT: REPLACE THESE WITH YOUR KEYS FROM EMAILJS DASHBOARD
-    // -------------------------------------------------------------------
-    emailjs.init("DUvS4QegBBxK6HtX_"); 
-})();
+// Typing Effect
+const texts = [
+    "Aspiring Software Engineer",
+    "B.Tech CSE (AI & Data Science)",
+    "Full Stack Developer",
+    "Problem Solver & Innovator"
+];
 
-document.getElementById('contact-form').addEventListener('submit', function(event) {
-    event.preventDefault();
-    const btn = this.querySelector('button');
-    const originalText = btn.innerHTML;
+let textIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+const typingElement = document.getElementById('typed-text');
+const typingSpeed = 100;
+const deletingSpeed = 50;
+const delayBetweenTexts = 2000;
+
+function type() {
+    const currentText = texts[textIndex];
     
-    btn.innerHTML = '<span>Sending...</span>';
-    btn.disabled = true;
+    if (isDeleting) {
+        typingElement.textContent = currentText.substring(0, charIndex - 1);
+        charIndex--;
+    } else {
+        typingElement.textContent = currentText.substring(0, charIndex + 1);
+        charIndex++;
+    }
 
-    // IMPORTANT: REPLACE WITH YOUR SERVICE ID AND TEMPLATE ID
-    emailjs.sendForm('service_3s3vkrs', 'template_l7irodn', this)
+    let speed = isDeleting ? deletingSpeed : typingSpeed;
+
+    if (!isDeleting && charIndex === currentText.length) {
+        speed = delayBetweenTexts;
+        isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        textIndex = (textIndex + 1) % texts.length;
+        speed = 500;
+    }
+
+    setTimeout(type, speed);
+}
+
+// Smooth Scroll
+function scrollToSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    if (section) {
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+}
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        scrollToSection(targetId);
+        
+        // Close mobile menu if open
+        const navbarCollapse = document.getElementById('navbarNav');
+        if (navbarCollapse.classList.contains('show')) {
+            navbarCollapse.classList.remove('show');
+        }
+    });
+});
+
+// Active Navigation
+window.addEventListener('scroll', () => {
+    const sections = document.querySelectorAll('section[id]');
+    const scrollY = window.pageYOffset;
+
+    sections.forEach(section => {
+        const sectionHeight = section.offsetHeight;
+        const sectionTop = section.offsetTop - 100;
+        const sectionId = section.getAttribute('id');
+        const navLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
+
+        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+            navLink?.classList.add('active');
+        } else {
+            navLink?.classList.remove('active');
+        }
+    });
+});
+
+
+// Contact Form with EmailJS
+document.getElementById('contactForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const btn = this.querySelector('button[type="submit"]');
+    const originalText = btn.innerHTML;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending...';
+    btn.disabled = true;
+    
+    const formData = {
+        from_name: this.name.value,
+        from_email: this.email.value,
+        subject: this.subject.value,
+        message: this.message.value,
+        to_email: 'naavviinn001@gmail.com'
+    };
+    
+    // Replace with your actual EmailJS credentials
+    emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', formData)
         .then(() => {
-            btn.innerHTML = '<span>Sent!</span> <i class="fas fa-check"></i>';
-            btn.classList.add('btn-success');
-            document.getElementById('contact-form').reset();
-            setTimeout(() => {
-                btn.innerHTML = originalText;
-                btn.disabled = false;
-                btn.classList.remove('btn-success');
-            }, 3000);
-        }, (err) => {
-            btn.innerHTML = 'Error!';
-            console.error('EmailJS Error:', err);
-            // Alert user to console for debugging
-            alert("Email failed to send. Check Console for details (likely missing API Keys).");
-            setTimeout(() => {
-                btn.innerHTML = originalText;
-                btn.disabled = false;
-            }, 3000);
+            alert('✅ Message sent successfully! I will get back to you soon.');
+            this.reset();
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+        })
+        .catch((error) => {
+            console.error('EmailJS Error:', error);
+            alert('❌ Failed to send message. Please email directly at naavviinn001@gmail.com');
+            btn.innerHTML = originalText;
+            btn.disabled = false;
         });
+
+
+
+});
+// Resume Upload
+const resumeInput = document.getElementById('resumeInput');
+const resumeViewer = document.getElementById('resumeViewer');
+if (resumeInput) {
+resumeInput.addEventListener('change', function(e) {
+const file = e.target.files[0];
+if (file && file.type === 'application/pdf') {
+const fileURL = URL.createObjectURL(file);
+resumeViewer.innerHTML = <iframe src="${fileURL}" style="width: 100%; height: 100%; border: none; border-radius: 10px;"></iframe>;
+resumeViewer.classList.add('active');
+} else {
+alert('Please upload a PDF file');
+}
+});
+}
+// Certificate Upload
+function setupCertificateUpload(modalId, inputId) {
+const modal = document.getElementById(modalId);
+if (modal) {
+const input = modal.querySelector('input[type="file"]');
+input?.addEventListener('change', function(e) {
+const file = e.target.files[0];
+if (file) {
+const fileURL = URL.createObjectURL(file);
+const viewer = document.createElement('div');
+viewer.className = 'document-viewer active mt-3';
+            if (file.type === 'application/pdf') {
+                viewer.innerHTML = `<iframe src="${fileURL}" style="width: 100%; height: 500px; border: none; border-radius: 10px;"></iframe>`;
+            } else if (file.type.startsWith('image/')) {
+                viewer.innerHTML = `<img src="${fileURL}" style="width: 100%; border-radius: 10px;" alt="Certificate">`;
+            }
+            
+            const existingViewer = modal.querySelector('.document-viewer');
+            if (existingViewer) {
+                existingViewer.remove();
+            }
+            
+            input.parentNode.appendChild(viewer);
+        }
+    });
+}
+}
+// Initialize typing effect
+document.addEventListener('DOMContentLoaded', function() {
+type();
+setupCertificateUpload('certModal1');
+setupCertificateUpload('certModal2');
+});
+// Navbar background on scroll
+window.addEventListener('scroll', () => {
+const navbar = document.querySelector('.navbar');
+if (window.scrollY > 50) {
+navbar.style.boxShadow = '0 4px 20px rgba(13, 138, 188, 0.15)';
+} else {
+navbar.style.boxShadow = '0 2px 10px rgba(13, 138, 188, 0.1)';
+}
 });

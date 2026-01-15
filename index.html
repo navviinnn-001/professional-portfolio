@@ -1,232 +1,692 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Navin Krishna I N | Portfolio</title>
-
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="assets/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navin Krishna - Software Engineer Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <span class="brand-text">NK</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#certificates">Certificates</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item">
+                        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+                            <i class="fas fa-moon" id="theme-icon"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-<!-- ================= NAVBAR ================= -->
-<nav class="navbar navbar-expand-lg fixed-top glass-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="#home">Navin.</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
-        <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
-        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-        <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <div class="gradient-orb orb-1"></div>
+            <div class="gradient-orb orb-2"></div>
+            <div class="gradient-orb orb-3"></div>
+        </div>
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-12 text-center hero-content">
+                    <div class="hero-badge mb-4" data-aos="fade-up">
+                        <i class="fas fa-code me-2"></i>
+                        <span>Available for Opportunities</span>
+                    </div>
+                    <h1 class="hero-title mb-4" data-aos="fade-up" data-aos-delay="100">
+                        Hi, I'm <span class="gradient-text">Navin Krishna</span>
+                    </h1>
+                    <div class="hero-subtitle mb-5" data-aos="fade-up" data-aos-delay="200">
+                        <span id="typed-text"></span>
+                        <span class="typed-cursor">|</span>
+                    </div>
+                    <div class="hero-buttons mb-5" data-aos="fade-up" data-aos-delay="300">
+                        <button class="btn btn-primary-gradient me-3" data-bs-toggle="modal" data-bs-target="#resumeModal">
+                            <i class="fas fa-file-pdf me-2"></i>View Resume
+                        </button>
+                        <button class="btn btn-outline-gradient" onclick="scrollToSection('contact')">
+                            <i class="fas fa-envelope me-2"></i>Let's Talk
+                        </button>
+                    </div>
+                    <div class="social-links" data-aos="fade-up" data-aos-delay="400">
+                        <a href="https://github.com/navviinnn-001" target="_blank" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/navin-krishna-i-n-49640134a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="mailto:naavviinn001@gmail.com" class="social-link">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="tel:+919605434119" class="social-link">
+                            <i class="fas fa-phone"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </section>
 
-<!-- ================= HOME ================= -->
-<section id="home" class="hero-section d-flex align-items-center">
-  <div class="container text-center">
-    <h1 class="hero-title">Hi, I'm <span>Navin Krishna I N</span></h1>
-    <p class="hero-subtitle">
-      Aspiring Software Engineer | Frontend & JavaScript Developer
-    </p>
-    <p class="section-text mt-3">
-      B.Tech CSE (AI & Data Science) student passionate about building scalable,
-      responsive, and user-centric web applications.
-    </p>
-    <div class="hero-buttons">
-      <a href="#projects" class="btn btn-primary">View Projects</a>
-      <a href="#contact" class="btn btn-outline-light">Contact Me</a>
+    <!-- About Section -->
+    <section id="about" class="section-padding">
+        <div class="container">
+            <div class="section-header text-center mb-5" data-aos="fade-up">
+                <span class="section-tag">Get To Know</span>
+                <h2 class="section-title">About Me</h2>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-5 mb-4 mb-lg-0" data-aos="fade-right">
+                    <div class="about-image-wrapper">
+                        <div class="about-image">
+                            <img src="assets/images/profile.jpg" alt="Navin Krishna" onerror="this.src='https://ui-avatars.com/api/?name=Navin+Krishna&size=400&background=0D8ABC&color=fff&bold=true'">
+                            <div class="about-image-bg"></div>
+                        </div>
+                        <div class="stats-card">
+                            <div class="stat-item">
+                                <h3>4+</h3>
+                                <p>Projects</p>
+                            </div>
+                            <div class="stat-item">
+                                <h3>1+</h3>
+                                <p>Internship</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7" data-aos="fade-left">
+                    <div class="about-content">
+                        <h3 class="mb-4">Aspiring Software Engineer & Developer</h3>
+                        <p class="lead-text mb-4">B.Tech student specializing in Computer Science & Engineering with a focus on AI & Data Science at Mentor Academy for Design, Entrepreneurship, Innovation & Technology.</p>
+                        <p class="mb-4">I'm passionate about building innovative solutions that solve real-world problems. With hands-on experience in software development workflows through internships and personal projects, I bring a strong foundation in Python, Web Technologies, and Data Structures.</p>
+                        
+                        <div class="info-list">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <div class="info-item">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <div>
+                                            <span class="label">Location</span>
+                                            <p>Tirur, Malappuram, Kerala</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="info-item">
+                                        <i class="fas fa-envelope"></i>
+                                        <div>
+                                            <span class="label">Email</span>
+                                            <p>nxvin123@gmail.com</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="info-item">
+                                        <i class="fas fa-phone"></i>
+                                        <div>
+                                            <span class="label">Phone</span>
+                                            <p>+91 96054 34119</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="info-item">
+                                        <i class="fas fa-chess"></i>
+                                        <div>
+                                            <span class="label">Achievement</span>
+                                            <p>FIDE-Rated Chess Player</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education & Experience Section -->
+    <section id="education" class="section-padding bg-secondary">
+        <div class="container">
+            <div class="section-header text-center mb-5" data-aos="fade-up">
+                <span class="section-tag">My Journey</span>
+                <h2 class="section-title">Education & Experience</h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item" data-aos="fade-up">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <span class="timeline-date">Present</span>
+                        <h4>B.Tech - CSE (AI & Data Science)</h4>
+                        <p class="institution">Mentor Academy for Design, Entrepreneurship, Innovation & Technology</p>
+                        <p>Specializing in Data Structures, Object-Oriented Programming, Web Development, and Database Management with a strong focus on AI and Data Science applications.</p>
+                        <div class="timeline-tags">
+                            <span class="tag">Data Structures</span>
+                            <span class="tag">OOPs</span>
+                            <span class="tag">Web Dev</span>
+                            <span class="tag">DBMS</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <span class="timeline-date">1 Month</span>
+                        <h4>Software Development Intern</h4>
+                        <p class="institution">Litmus7</p>
+                        <p>Collaborated with the development team on enterprise-grade software workflows and agile methodologies. Assisted in code debugging and testing phases while gaining hands-on exposure to corporate IT practices.</p>
+                        <div class="timeline-tags">
+                            <span class="tag">Agile</span>
+                            <span class="tag">Debugging</span>
+                            <span class="tag">Testing</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <span class="timeline-date">Completed</span>
+                        <h4>Higher Secondary - Science</h4>
+                        <p class="institution">FMHSS, Tirur, Malappuram</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <span class="timeline-date">Completed</span>
+                        <h4>Secondary School</h4>
+                        <p class="institution">MES Central School, Tirur, Malappuram</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section-padding">
+        <div class="container">
+            <div class="section-header text-center mb-5" data-aos="fade-up">
+                <span class="section-tag">What I Know</span>
+                <h2 class="section-title">Technical Skills</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h4>Programming Languages</h4>
+                        <p>Strong foundation in multiple programming languages</p>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">C</span>
+                            <span class="skill-tag">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h4>Web Development</h4>
+                        <p>Modern web technologies and frameworks</p>
+                        <div class="skill-tags">
+                            <span class="skill-tag">HTML5</span>
+                            <span class="skill-tag">CSS3</span>
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">REST API</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h4>Development Tools</h4>
+                        <p>Professional development environment</p>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Git</span>
+                            <span class="skill-tag">GitHub</span>
+                            <span class="skill-tag">VS Code</span>
+                            <span class="skill-tag">Linux</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h4>Core Concepts</h4>
+                        <p>Computer science fundamentals</p>
+                        <div class="skill-tags">
+                            <span class="skill-tag">DSA</span>
+                            <span class="skill-tag">OOPs</span>
+                            <span class="skill-tag">Algorithms</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-window-restore"></i>
+                        </div>
+                        <h4>UI Development</h4>
+                        <p>Creating user interfaces and experiences</p>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Tkinter</span>
+                            <span class="skill-tag">Bootstrap</span>
+                            <span class="skill-tag">Responsive</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h4>Database Management</h4>
+                        <p>Data storage and management</p>
+                        <div class="skill-tags">
+                            <span class="skill-tag">DBMS</span>
+                            <span class="skill-tag">SQL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section-padding bg-secondary">
+        <div class="container">
+            <div class="section-header text-center mb-5" data-aos="fade-up">
+                <span class="section-tag">My Work</span>
+                <h2 class="section-title">Featured Projects</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-6" data-aos="fade-up">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-bus"></i>
+                            <div class="project-overlay">
+                                <a href="https://github.com/navviinnn-001" target="_blank" class="project-link">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <span class="project-status">Ongoing</span>
+                            <h4>Smart Public Transport & Travel App</h4>
+                            <p>Developing an intelligent transport solution featuring real-time GPS tracking, online ticketing, and route planning to digitize public transit services.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">GPS API</span>
+                                <span class="tech-tag">Real-time</span>
+                            </div>
+                            <a href="https://github.com/navviinnn-001" target="_blank" class="project-btn">
+                                View Code <i class="fas fa-arrow-right ms-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-tasks"></i>
+                            <div class="project-overlay">
+                                <a href="https://github.com/navviinnn-001" target="_blank" class="project-link">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <span class="project-status completed">Completed</span>
+                            <h4>TaskFlow: Task Management App</h4>
+                            <p>Built a CRUD-based To-Do application allowing users to create, update, and track tasks with local state management and clean UI.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">CRUD</span>
+                            </div>
+                            <a href="https://github.com/navviinnn-001" target="_blank" class="project-btn">
+                                View Code <i class="fas fa-arrow-right ms-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6" data-aos="fade-up">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-cloud-sun"></i>
+                            <div class="project-overlay">
+                                <a href="https://github.com/navviinnn-001" target="_blank" class="project-link">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <span class="project-status completed">Completed</span>
+                            <h4>Weather Forecasting Application</h4>
+                            <p>Engineered a real-time weather tool integrating third-party APIs to fetch and display live climate data for user-specified locations.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">JavaScript</span>
+                                <span class="tech-tag">Weather API</span>
+                                <span class="tech-tag">Real-time</span>
+                            </div>
+                            <a href="https://github.com/navviinnn-001" target="_blank" class="project-btn">
+                                View Code <i class="fas fa-arrow-right ms-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <i class="fas fa-gamepad"></i>
+                            <div class="project-overlay">
+                                <a href="https://github.com/navviinnn-001" target="_blank" class="project-link">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <span class="project-status completed">Completed</span>
+                            <h4>Hangman Game (Python GUI)</h4>
+                            <p>Developed an interactive desktop game using Python and Tkinter, implementing logic for string manipulation and event handling.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Tkinter</span>
+                                <span class="tech-tag">GUI</span>
+                            </div>
+                            <a href="https://github.com/navviinnn-001" target="_blank" class="project-btn">
+                                View Code <i class="fas fa-arrow-right ms-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- Certificates Section -->
+<section id="certificates" class="section-padding">
+    <div class="container">
+        <div class="section-header text-center mb-5" data-aos="fade-up">
+            <span class="section-tag">Recognition</span>
+            <h2 class="section-title">Certifications & Achievements</h2>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                <div class="certificate-card" data-bs-toggle="modal" data-bs-target="#certModal1">
+                    <div class="cert-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h4>Litmus7 Internship</h4>
+                    <p>Software Development Certificate</p>
+                    <span class="cert-view">View Certificate <i class="fas fa-arrow-right ms-2"></i></span>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="certificate-card" data-bs-toggle="modal" data-bs-target="#certModal2">
+                    <div class="cert-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h4>IoT & 5G Technology</h4>
+                    <p>Workshop Participation</p>
+                    <span class="cert-view">View Certificate <i class="fas fa-arrow-right ms-2"></i></span>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="certificate-card">
+                    <div class="cert-icon">
+                        <i class="fas fa-chess"></i>
+                    </div>
+                    <h4>FIDE-Rated Chess Player</h4>
+                    <p>State-Level Competitor</p>
+                    <span class="cert-badge">Achievement</span>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </section>
 
-<!-- ================= ABOUT ================= -->
-<section id="about" class="section">
-  <div class="container">
-    <div class="section-title">About Me</div>
-    <p class="section-text">
-      I am an aspiring software engineer and B.Tech Computer Science (AI & Data Science)
-      student with hands-on experience gained through internships and real-world projects.
-      I have a strong foundation in Python, web technologies, and data structures, and I enjoy
-      creating clean, maintainable, and responsive applications. I am actively seeking
-      opportunities to contribute to enterprise-level solutions while continuously improving
-      my technical depth.
-    </p>
-  </div>
-</section>
-
-<!-- ================= EDUCATION ================= -->
-<section id="education" class="section bg-light">
-  <div class="container">
-    <div class="section-title">Education</div>
-
-    <div class="card shadow-sm mb-4">
-      <div class="card-body">
-        <h5>B.Tech – Computer Science Engineering (AI & Data Science)</h5>
-        <p class="mb-1">
-          Mentor Academy for Design, Entrepreneurship, Innovation & Technology
-        </p>
-        <small>
-          Key Focus: Data Structures, OOP, Web Development, Database Management
-        </small>
-      </div>
+<!-- Certificate Modal 1 - Litmus7 -->
+<div class="modal fade" id="certModal1" tabindex="-1">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="fas fa-certificate me-2"></i>Litmus7 Internship Certificate</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center">
+                    <!-- For PDF Certificate -->
+                    <iframe src="assets/documents/Litmus7_Certificate.pdf" 
+                            style="width: 100%; height: 600px; border: none; border-radius: 10px;">
+                    </iframe>
+                    
+                    <!-- OR if your certificate is an image (jpg/png), replace above iframe with: -->
+                    <!-- <img src="assets/documents/Litmus7_Certificate.jpg" 
+                         style="width: 100%; max-height: 600px; object-fit: contain; border-radius: 10px;" 
+                         alt="Litmus7 Certificate"> -->
+                    
+                    <div class="mt-4">
+                        <a href="assets/documents/Litmus7_Certificate.pdf" 
+                           download="Litmus7_Internship_Certificate.pdf" 
+                           class="btn btn-primary-gradient">
+                            <i class="fas fa-download me-2"></i>Download Certificate
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
 
-    <div class="card shadow-sm mb-3">
-      <div class="card-body">
-        <h6>Higher Secondary – Science</h6>
-        <p class="mb-0">FMHSS, Tirur, Malappuram</p>
-      </div>
+<!-- Certificate Modal 2 - IoT & 5G -->
+<div class="modal fade" id="certModal2" tabindex="-1">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="fas fa-microchip me-2"></i>IoT & 5G Workshop Certificate</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center">
+                    <!-- For PDF Certificate -->
+                    <iframe src="assets/documents/IoT_5G_Certificate.pdf" 
+                            style="width: 100%; height: 600px; border: none; border-radius: 10px;">
+                    </iframe>
+                    
+                    <!-- OR if your certificate is an image (jpg/png), replace above iframe with: -->
+                    <!-- <img src="assets/documents/IoT_5G_Certificate.jpg" 
+                         style="width: 100%; max-height: 600px; object-fit: contain; border-radius: 10px;" 
+                         alt="IoT & 5G Certificate"> -->
+                    
+                    <div class="mt-4">
+                        <a href="assets/documents/IoT_5G_Certificate.pdf" 
+                           download="IoT_5G_Workshop_Certificate.pdf" 
+                           class="btn btn-primary-gradient">
+                            <i class="fas fa-download me-2"></i>Download Certificate
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
 
-    <div class="card shadow-sm">
-      <div class="card-body">
-        <h6>Secondary School</h6>
-        <p class="mb-0">MES Central School, Tirur, Malappuram</p>
-      </div>
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding bg-secondary">
+        <div class="container">
+            <div class="section-header text-center mb-5" data-aos="fade-up">
+                <span class="section-tag">Get In Touch</span>
+                <h2 class="section-title">Contact Me</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-5" data-aos="fade-right">
+                    <div class="contact-info-card">
+                        <h3 class="mb-4">Let's work together!</h3>
+                        <p class="mb-5">Feel free to reach out for collaborations, opportunities, or just a friendly hello.</p>
+                        
+                        <div class="contact-items">
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <h5>Email</h5>
+                                    <p>nxvin123@gmail.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <h5>Phone</h5>
+                                    <p>+91 96054 34119</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="contact-details">
+                                    <h5>Location</h5>
+                                    <p>Tirur, Malappuram, Kerala, India</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-social mt-4">
+                            <a href="https://github.com/navviinnn-001" target="_blank"><i class="fab fa-github"></i></a>
+                            <a href="https://www.linkedin.com/in/navin-krishna-i-n-49640134a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin"></i></a>
+                            <a href="mailto:naavviinn001@gmail.com"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-7" data-aos="fade-left">
+                    <div class="contact-form-card">
+                        <form id="contactForm">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Your Name</label>
+                                        <input type="text" class="form-control" name="name" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Your Email</label>
+                                        <input type="email" class="form-control" name="email" required>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label>Subject</label>
+                                        <input type="text" class="form-control" name="subject" required>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label>Message</label>
+                                        <textarea class="form-control" name="message" rows="5" required></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary-gradient w-100">
+                                        <i class="fas fa-paper-plane me-2"></i>Send Message
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 Navin Krishna. Crafted with <i class="fas fa-heart"></i> and <i class="fas fa-coffee"></i></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Resume Modal -->
+    <div class="modal fade" id="resumeModal" tabindex="-1">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><i class="fas fa-file-pdf me-2"></i>My Resume</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div id="resumeViewer" class="document-viewer active">
+            <iframe src="assets/documents/Navin_Krishna_Resume.pdf" 
+                    style="width: 100%; height: 600px; border: none; border-radius: 10px;">
+            </iframe>
+        </div>
+        
+        <div class="document-actions mt-4">
+            <a href="assets/documents/Navin_Krishna_Resume.pdf" 
+               download="Navin_Krishna_Resume.pdf" 
+               class="btn btn-primary-gradient me-2">
+                <i class="fas fa-download me-2"></i>Download Resume
+            </a>
+            <a href="mailto:naavviinn001@gmail.com" class="btn btn-outline-gradient">
+                <i class="fas fa-envelope me-2"></i>Email Me
+            </a>
+        </div>
     </div>
-  </div>
-</section>
-
-<!-- ================= EXPERIENCE ================= -->
-<section id="experience" class="section">
-  <div class="container">
-    <div class="section-title">Internships & Certifications</div>
-
-    <ul class="timeline">
-      <li>
-        <strong>Software Development Intern – Litmus7</strong><br>
-        Worked closely with development teams to understand enterprise-grade software
-        workflows and Agile methodologies. Assisted in debugging, testing, and quality
-        assurance while gaining exposure to professional IT environments.
-      </li>
-      <li>
-        <strong>Certifications & Workshops</strong><br>
-        Active participant in IoT & 5G technology workshops and future technology summits,
-        gaining exposure to emerging industry trends.
-      </li>
-    </ul>
-  </div>
-</section>
-
-<!-- ================= SKILLS ================= -->
-<section id="skills" class="section bg-light">
-  <div class="container">
-    <div class="section-title">Skills</div>
-    <div class="row text-center g-4">
-      <div class="col-md-3">Python</div>
-      <div class="col-md-3">C</div>
-      <div class="col-md-3">JavaScript</div>
-      <div class="col-md-3">Data Structures & OOP</div>
-      <div class="col-md-3">HTML5</div>
-      <div class="col-md-3">CSS3</div>
-      <div class="col-md-3">React (Basic)</div>
-      <div class="col-md-3">REST APIs</div>
-      <div class="col-md-3">Git & GitHub</div>
-      <div class="col-md-3">VS Code</div>
-      <div class="col-md-3">Tkinter</div>
-      <div class="col-md-3">Linux (Basic)</div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= SERVICES ================= -->
-<section id="services" class="section">
-  <div class="container">
-    <div class="section-title">Services</div>
-    <div class="row g-4">
-      <div class="col-md-4 service-card">Frontend Web Development</div>
-      <div class="col-md-4 service-card">JavaScript Application Development</div>
-      <div class="col-md-4 service-card">API-Based Web Solutions</div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= PROJECTS ================= -->
-<section id="projects" class="section bg-light">
-  <div class="container">
-    <div class="section-title">Projects</div>
-    <div class="row g-4">
-
-      <div class="col-md-4 project-card">
-        <h5>Weather Forecasting Application</h5>
-        <p>
-          Real-time weather application using third-party APIs to display live
-          temperature, humidity, and wind data.
-        </p>
-        <a href="https://github.com/navviinnn-001/addon-task-and-project" target="_blank">
-          GitHub →
-        </a>
-      </div>
-
-      <div class="col-md-4 project-card">
-        <h5>TaskFlow – To-Do App</h5>
-        <p>
-          CRUD-based task management application with local state persistence
-          and a clean user interface.
-        </p>
-        <a href="https://github.com/navviinnn-001/addon-task-and-project" target="_blank">
-          GitHub →
-        </a>
-      </div>
-
-      <div class="col-md-4 project-card">
-        <h5>Smart Public Transport App</h5>
-        <p>
-          Ongoing project focused on real-time GPS tracking, online ticketing,
-          and intelligent route planning.
-        </p>
-        <a href="https://github.com/navviinnn-001/addon-task-and-project" target="_blank">
-          GitHub →
-        </a>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ================= CONTACT ================= -->
-<section id="contact" class="section">
-  <div class="container">
-    <div class="section-title">Contact Me</div>
-    <form id="contactForm" class="contact-form">
-      <input type="text" id="name" placeholder="Your Name" required>
-      <input type="email" id="email" placeholder="Your Email" required>
-      <textarea id="message" placeholder="Your Message" required></textarea>
-      <button type="submit" class="btn btn-primary">Send Message</button>
-    </form>
-  </div>
-</section>
-
-<!-- ================= FOOTER ================= -->
-<footer class="footer text-center">
-  <p>© 2026 Navin Krishna I N. All Rights Reserved.</p>
-</footer>
-
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- EmailJS -->
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-
-<!-- Custom JS -->
-<script src="assets/js/script.js"></script>
-
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/script.js"></script>
 </body>
 </html>
