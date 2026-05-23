@@ -1,203 +1,278 @@
-// Theme Toggle
-function toggleTheme() {
-    const html = document.documentElement;
-    const icon = document.getElementById('theme-icon');
-    const currentTheme = html.getAttribute('data-theme');
-    
-    if (currentTheme === 'dark') {
-        html.removeAttribute('data-theme');
-        icon.className = 'fas fa-moon';
-        localStorage.setItem('theme', 'light');
+/* ═══════════════════════════════════════════
+   NAVIN KRISHNA PORTFOLIO — SCRIPT
+═══════════════════════════════════════════ */
+
+// ─── PAGE LOADER ─────────────────────────
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        const loader = document.getElementById('pageLoader');
+        loader.classList.add('gone');
+        // Trigger hero animations after load
+        document.body.style.overflow = 'visible';
+    }, 1800);
+});
+document.body.style.overflow = 'hidden';
+
+// ─── CUSTOM CURSOR ───────────────────────
+const cursorDot  = document.querySelector('.cursor-dot');
+const cursorRing = document.querySelector('.cursor-ring');
+let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+
+document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX; mouseY = e.clientY;
+    cursorDot.style.left  = mouseX + 'px';
+    cursorDot.style.top   = mouseY + 'px';
+});
+
+function animateRing() {
+    ringX += (mouseX - ringX) * 0.12;
+    ringY += (mouseY - ringY) * 0.12;
+    cursorRing.style.left = ringX + 'px';
+    cursorRing.style.top  = ringY + 'px';
+    requestAnimationFrame(animateRing);
+}
+animateRing();
+
+document.querySelectorAll('a, button, .cert-card, .proj-card, .skill-card').forEach(el => {
+    el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+    el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+});
+
+// ─── THEME TOGGLE ─────────────────────────
+const themeBtn  = document.getElementById('themeBtn');
+const themeIcon = document.getElementById('themeIcon');
+
+function applyTheme(theme) {
+    if (theme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeIcon.className = 'fas fa-sun';
     } else {
-        html.setAttribute('data-theme', 'dark');
-        icon.className = 'fas fa-sun';
-        localStorage.setItem('theme', 'dark');
+        document.documentElement.removeAttribute('data-theme');
+        themeIcon.className = 'fas fa-moon';
     }
 }
 
-// Load saved theme
-window.addEventListener('DOMContentLoaded', () => {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        document.getElementById('theme-icon').className = 'fas fa-sun';
-    }
+themeBtn.addEventListener('click', () => {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    const next = isDark ? 'light' : 'dark';
+    applyTheme(next);
+    localStorage.setItem('nk-theme', next);
 });
 
-// Typing Effect
-const texts = [
+// Load saved theme
+const savedTheme = localStorage.getItem('nk-theme') || 'light';
+applyTheme(savedTheme);
+
+// ─── NAVBAR ───────────────────────────────
+const navbar    = document.getElementById('navbar');
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+
+window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+    updateActiveNav();
+});
+
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+});
+
+document.querySelectorAll('.mobile-nav-item').forEach(item => {
+    item.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = '';
+    });
+});
+
+// Smooth scroll for all anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
+});
+
+// ─── ACTIVE NAV HIGHLIGHT ─────────────────
+function updateActiveNav() {
+    const sections = document.querySelectorAll('section[id]');
+    const scrollY  = window.scrollY + 120;
+
+    sections.forEach(sec => {
+        const top    = sec.offsetTop;
+        const height = sec.offsetHeight;
+        const id     = sec.getAttribute('id');
+        const link   = document.querySelector(`.nav-item[href="#${id}"]`);
+        if (link) {
+            link.classList.toggle('active', scrollY >= top && scrollY < top + height);
+        }
+    });
+}
+
+// ─── TYPING EFFECT ────────────────────────
+const roles = [
     "Aspiring Software Engineer",
     "B.Tech CSE (AI & Data Science)",
     "Full Stack Developer",
     "Problem Solver & Innovator"
 ];
 
-let textIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-const typingElement = document.getElementById('typed-text');
-const typingSpeed = 100;
-const deletingSpeed = 50;
-const delayBetweenTexts = 2000;
+let roleIdx = 0, charIdx = 0, deleting = false;
+const typedEl = document.getElementById('typedText');
 
-function type() {
-    const currentText = texts[textIndex];
-    
-    if (isDeleting) {
-        typingElement.textContent = currentText.substring(0, charIndex - 1);
-        charIndex--;
+function typeEffect() {
+    if (!typedEl) return;
+    const current = roles[roleIdx];
+
+    if (deleting) {
+        typedEl.textContent = current.slice(0, --charIdx);
     } else {
-        typingElement.textContent = currentText.substring(0, charIndex + 1);
-        charIndex++;
+        typedEl.textContent = current.slice(0, ++charIdx);
     }
 
-    let speed = isDeleting ? deletingSpeed : typingSpeed;
+    let delay = deleting ? 45 : 95;
 
-    if (!isDeleting && charIndex === currentText.length) {
-        speed = delayBetweenTexts;
-        isDeleting = true;
-    } else if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        textIndex = (textIndex + 1) % texts.length;
-        speed = 500;
+    if (!deleting && charIdx === current.length) {
+        delay = 2200;
+        deleting = true;
+    } else if (deleting && charIdx === 0) {
+        deleting = false;
+        roleIdx  = (roleIdx + 1) % roles.length;
+        delay    = 400;
     }
 
-    setTimeout(type, speed);
+    setTimeout(typeEffect, delay);
 }
 
-// Smooth Scroll
-function scrollToSection(sectionId) {
-    const section = document.getElementById(sectionId);
-    if (section) {
-        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-}
+// ─── REVEAL ON SCROLL ─────────────────────
+const revealEls = document.querySelectorAll('.reveal');
 
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href').substring(1);
-        scrollToSection(targetId);
-        
-        // Close mobile menu if open
-        const navbarCollapse = document.getElementById('navbarNav');
-        if (navbarCollapse.classList.contains('show')) {
-            navbarCollapse.classList.remove('show');
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+            setTimeout(() => {
+                entry.target.classList.add('visible');
+            }, 80 * (entry.target.dataset.delay || 0));
+            revealObserver.unobserve(entry.target);
         }
+    });
+}, { threshold: 0.12 });
+
+// Add stagger delays to siblings
+document.querySelectorAll('.skills-grid, .projects-grid, .certs-grid, .about-cards, .about-stats').forEach(grid => {
+    grid.querySelectorAll('.reveal').forEach((el, i) => {
+        el.dataset.delay = i;
     });
 });
 
-// Active Navigation
-window.addEventListener('scroll', () => {
-    const sections = document.querySelectorAll('section[id]');
-    const scrollY = window.pageYOffset;
+revealEls.forEach(el => revealObserver.observe(el));
 
-    sections.forEach(section => {
-        const sectionHeight = section.offsetHeight;
-        const sectionTop = section.offsetTop - 100;
-        const sectionId = section.getAttribute('id');
-        const navLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
-
-        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-            navLink?.classList.add('active');
-        } else {
-            navLink?.classList.remove('active');
+// ─── SKILL BARS ───────────────────────────
+const skillBarObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const bars = entry.target.querySelectorAll('.sk-bar');
+            bars.forEach(bar => {
+                bar.style.width = bar.dataset.width + '%';
+            });
         }
     });
-});
+}, { threshold: 0.3 });
 
+document.querySelectorAll('.skills-grid').forEach(grid => skillBarObserver.observe(grid));
 
-// Contact Form with EmailJS
-document.getElementById('contactForm').addEventListener('submit', async function(e) {
+// ─── COUNTER ANIMATION ────────────────────
+const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.querySelectorAll('.stat-num').forEach(num => {
+                const target = parseInt(num.dataset.count);
+                let current = 0;
+                const step = Math.ceil(target / 30);
+                const timer = setInterval(() => {
+                    current = Math.min(current + step, target);
+                    num.textContent = current;
+                    if (current >= target) clearInterval(timer);
+                }, 50);
+            });
+            counterObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.about-stats').forEach(el => counterObserver.observe(el));
+
+// ─── CONTACT FORM ─────────────────────────
+const contactForm = document.getElementById('contactForm');
+
+contactForm?.addEventListener('submit', async (e) => {
     e.preventDefault();
-    
-    const btn = this.querySelector('button[type="submit"]');
-    const originalText = btn.innerHTML;
-    btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending...';
-    btn.disabled = true;
-    
-    // Initialize EmailJS with your public key
-    emailjs.init('yXA_MBDvQ3p9d3GSL'); // Replace with your actual public key from EmailJS
-    
-    const formData = {
-        from_name: this.name.value,
-        from_email: this.email.value,
-        subject: this.subject.value,
-        message: this.message.value
-    };
-    
-    // Send email using EmailJS
-    emailjs.send('service_3s3vkrs', 'template_3i9kyqj', formData)
-        .then(() => {
-            alert('✅ Message sent successfully! I will get back to you soon.');
-            this.reset();
-            btn.innerHTML = originalText;
-            btn.disabled = false;
-        })
-        .catch((error) => {
-            console.error('EmailJS Error:', error);
-            alert('❌ Failed to send message. Please email directly at naavviinn001@gmail.com');
-            btn.innerHTML = originalText;
-            btn.disabled = false;
-        });
+    const btn = document.getElementById('submitBtn');
+    const original = btn.innerHTML;
 
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+    btn.disabled  = true;
 
+    try {
+        emailjs.init('yXA_MBDvQ3p9d3GSL');
+        const formData = {
+            from_name:  contactForm.name.value,
+            from_email: contactForm.email.value,
+            subject:    contactForm.subject.value,
+            message:    contactForm.message.value
+        };
 
+        await emailjs.send('service_3s3vkrs', 'template_3i9kyqj', formData);
+        showToast('✅ Message sent! I\'ll get back to you soon.', 'success');
+        contactForm.reset();
+    } catch (err) {
+        console.error('EmailJS Error:', err);
+        showToast('❌ Failed to send. Email me at naavviinn001@gmail.com', 'error');
+    } finally {
+        btn.innerHTML = original;
+        btn.disabled  = false;
+    }
 });
-// Resume Upload
-const resumeInput = document.getElementById('resumeInput');
-const resumeViewer = document.getElementById('resumeViewer');
-if (resumeInput) {
-resumeInput.addEventListener('change', function(e) {
-const file = e.target.files[0];
-if (file && file.type === 'application/pdf') {
-const fileURL = URL.createObjectURL(file);
-resumeViewer.innerHTML = <iframe src="${fileURL}" style="width: 100%; height: 100%; border: none; border-radius: 10px;"></iframe>;
-resumeViewer.classList.add('active');
-} else {
-alert('Please upload a PDF file');
-}
-});
-}
-// Certificate Upload
-function setupCertificateUpload(modalId, inputId) {
-const modal = document.getElementById(modalId);
-if (modal) {
-const input = modal.querySelector('input[type="file"]');
-input?.addEventListener('change', function(e) {
-const file = e.target.files[0];
-if (file) {
-const fileURL = URL.createObjectURL(file);
-const viewer = document.createElement('div');
-viewer.className = 'document-viewer active mt-3';
-            if (file.type === 'application/pdf') {
-                viewer.innerHTML = `<iframe src="${fileURL}" style="width: 100%; height: 500px; border: none; border-radius: 10px;"></iframe>`;
-            } else if (file.type.startsWith('image/')) {
-                viewer.innerHTML = `<img src="${fileURL}" style="width: 100%; border-radius: 10px;" alt="Certificate">`;
-            }
-            
-            const existingViewer = modal.querySelector('.document-viewer');
-            if (existingViewer) {
-                existingViewer.remove();
-            }
-            
-            input.parentNode.appendChild(viewer);
-        }
+
+// ─── TOAST NOTIFICATION ──────────────────
+function showToast(msg, type = 'success') {
+    // Remove existing toast
+    document.querySelector('.nk-toast')?.remove();
+
+    const toast = document.createElement('div');
+    toast.className = 'nk-toast';
+    toast.style.cssText = `
+        position: fixed; bottom: 2rem; right: 2rem; z-index: 9999;
+        padding: 1rem 1.5rem; border-radius: 14px;
+        font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 500;
+        background: ${type === 'success' ? '#fff' : '#fff'};
+        color: ${type === 'success' ? '#0F1F33' : '#0F1F33'};
+        border-left: 4px solid ${type === 'success' ? '#4CAF50' : '#ef4444'};
+        box-shadow: 0 8px 40px rgba(0,0,0,0.15);
+        transform: translateX(120%);
+        transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+        max-width: 380px;
+    `;
+    toast.textContent = msg;
+    document.body.appendChild(toast);
+
+    requestAnimationFrame(() => {
+        toast.style.transform = 'translateX(0)';
     });
+
+    setTimeout(() => {
+        toast.style.transform = 'translateX(120%)';
+        setTimeout(() => toast.remove(), 500);
+    }, 4000);
 }
-}
-// Initialize typing effect
-document.addEventListener('DOMContentLoaded', function() {
-type();
-setupCertificateUpload('certModal1');
-setupCertificateUpload('certModal2');
-});
-// Navbar background on scroll
-window.addEventListener('scroll', () => {
-const navbar = document.querySelector('.navbar');
-if (window.scrollY > 50) {
-navbar.style.boxShadow = '0 4px 20px rgba(13, 138, 188, 0.15)';
-} else {
-navbar.style.boxShadow = '0 2px 10px rgba(13, 138, 188, 0.1)';
-}
+
+// ─── INIT ─────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(typeEffect, 2000);
+    updateActiveNav();
 });
