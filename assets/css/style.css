@@ -147,7 +147,7 @@ body {
 }
 .nav-inner {
     display: flex; align-items: center; justify-content: space-between;
-    padding: 1.2rem 5%;
+    padding: 1rem 5%;
     background: rgba(248,250,255,0.85);
     backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
     border-bottom: 1px solid var(--c-border);
@@ -155,12 +155,12 @@ body {
 }
 [data-theme="dark"] .nav-inner { background: rgba(5,13,26,0.9); }
 .navbar.scrolled .nav-inner {
-    padding: 0.8rem 5%;
+    padding: 0.7rem 5%;
     box-shadow: var(--shadow-sm);
 }
 .nav-logo {
     font-family: 'Syne', sans-serif;
-    font-size: 1.75rem; font-weight: 800;
+    font-size: 2rem; font-weight: 800;
     text-decoration: none;
     background: var(--g-primary);
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
@@ -171,13 +171,14 @@ body {
 .nav-links { display: flex; align-items: center; gap: 0.25rem; }
 .nav-item {
     font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem; font-weight: 500;
+    font-size: 0.95rem; font-weight: 500;
     color: var(--c-text2);
     text-decoration: none;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 1.1rem;
     border-radius: var(--radius-full);
     transition: all var(--t-fast) var(--ease);
     position: relative;
+    letter-spacing: 0.2px;
 }
 .nav-item:hover, .nav-item.active {
     color: var(--c-primary);
@@ -372,9 +373,7 @@ body {
     border-radius: 50%;
     background: conic-gradient(var(--c-primary), var(--c-cyan), var(--c-accent), var(--c-primary));
     padding: 4px;
-    animation: ringRotate 8s linear infinite;
 }
-@keyframes ringRotate { to { transform: rotate(360deg); } }
 .photo-ring-mid {
     width: 100%; height: 100%;
     border-radius: 50%;
@@ -509,32 +508,8 @@ body {
     box-shadow: var(--shadow-sm);
 }
 
-/* Scroll cue */
-.scroll-cue {
-    position: absolute; bottom: 2rem; left: 50%;
-    transform: translateX(-50%);
-    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
-    color: var(--c-text3); font-size: 0.75rem;
-    animation: scrollFade 2s ease-in-out infinite;
-}
-.scroll-mouse {
-    width: 24px; height: 36px;
-    border: 2px solid var(--c-text3);
-    border-radius: 12px; position: relative;
-}
-.scroll-wheel {
-    width: 4px; height: 8px;
-    background: var(--c-primary);
-    border-radius: 2px;
-    position: absolute; left: 50%; top: 6px;
-    transform: translateX(-50%);
-    animation: scrollWheel 1.5s ease-in-out infinite;
-}
-@keyframes scrollWheel {
-    0% { transform: translateX(-50%) translateY(0); opacity: 1; }
-    100% { transform: translateX(-50%) translateY(12px); opacity: 0; }
-}
-@keyframes scrollFade { 0%,100% { opacity: 0.5; } 50% { opacity: 1; } }
+/* Scroll cue — hidden */
+.scroll-cue { display: none; }
 
 /* ══════════════════════════════════════════
    ABOUT SECTION
@@ -794,7 +769,7 @@ body {
    CERTIFICATES SECTION
 ══════════════════════════════════════════ */
 .certs-section { background: var(--c-bg); }
-.certs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.certs-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; max-width: 900px; margin: 0 auto; }
 .cert-card {
     position: relative; overflow: hidden;
     background: var(--c-surface);
@@ -829,6 +804,7 @@ body {
 }
 .cert-card:hover .cert-icon-wrap { transform: scale(1.1) rotate(5deg); }
 .chess-icon { background: linear-gradient(135deg, #F59E0B, #EF4444); box-shadow: 0 8px 25px rgba(245,158,11,0.3); }
+.hackathon-icon { background: linear-gradient(135deg, #8B5CF6, #06B6D4); box-shadow: 0 8px 25px rgba(139,92,246,0.3); }
 .cert-content h3 { font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--c-text); margin-bottom: 0.5rem; }
 .cert-content p { color: var(--c-text3); font-size: 0.9rem; margin-bottom: 1rem; }
 .cert-issuer { font-size: 0.8rem; color: var(--c-primary); font-weight: 500; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; gap: 0.4rem; }
@@ -993,7 +969,7 @@ body {
     .hero-cta { justify-content: center; }
     .hero-socials { justify-content: center; }
     .projects-grid { grid-template-columns: 1fr; }
-    .certs-grid { grid-template-columns: 1fr; }
+    .certs-grid { grid-template-columns: 1fr; max-width: 100%; }
     .contact-grid { grid-template-columns: 1fr; }
     .cf-row { grid-template-columns: 1fr; }
     .about-stats { grid-template-columns: repeat(2, 1fr); }
