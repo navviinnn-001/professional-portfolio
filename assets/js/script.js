@@ -13,31 +13,6 @@ window.addEventListener('load', () => {
 });
 document.body.style.overflow = 'hidden';
 
-// ─── CUSTOM CURSOR ───────────────────────
-const cursorDot  = document.querySelector('.cursor-dot');
-const cursorRing = document.querySelector('.cursor-ring');
-let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
-
-document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX; mouseY = e.clientY;
-    cursorDot.style.left  = mouseX + 'px';
-    cursorDot.style.top   = mouseY + 'px';
-});
-
-function animateRing() {
-    ringX += (mouseX - ringX) * 0.12;
-    ringY += (mouseY - ringY) * 0.12;
-    cursorRing.style.left = ringX + 'px';
-    cursorRing.style.top  = ringY + 'px';
-    requestAnimationFrame(animateRing);
-}
-animateRing();
-
-document.querySelectorAll('a, button, .cert-card, .proj-card, .skill-card').forEach(el => {
-    el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
-    el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
-});
-
 // ─── THEME TOGGLE ─────────────────────────
 const themeBtn  = document.getElementById('themeBtn');
 const themeIcon = document.getElementById('themeIcon');
