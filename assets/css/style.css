@@ -495,11 +495,6 @@ body {
     border-radius: 50%;
     background: conic-gradient(var(--c-primary), var(--c-cyan), var(--c-accent), var(--c-primary));
     padding: 4px;
-    animation: ringRotate 8s linear infinite;
-}
-@keyframes ringRotate {
-    from { filter: hue-rotate(0deg); }
-    to   { filter: hue-rotate(360deg); }
 }
 .photo-ring-mid {
     width: 100%; height: 100%;
