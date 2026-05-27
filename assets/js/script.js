@@ -7,7 +7,6 @@ window.addEventListener('load', () => {
     setTimeout(() => {
         const loader = document.getElementById('pageLoader');
         loader.classList.add('gone');
-        // Trigger hero animations after load
         document.body.style.overflow = 'visible';
     }, 1800);
 });
@@ -34,32 +33,49 @@ themeBtn.addEventListener('click', () => {
     localStorage.setItem('nk-theme', next);
 });
 
-// Load saved theme
 const savedTheme = localStorage.getItem('nk-theme') || 'light';
 applyTheme(savedTheme);
 
 // ─── NAVBAR ───────────────────────────────
-const navbar    = document.getElementById('navbar');
-const hamburger = document.getElementById('hamburger');
+const navbar     = document.getElementById('navbar');
+const hamburger  = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');
+const mobileCloseBtn = document.getElementById('mobileCloseBtn');
 
 window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 60);
     updateActiveNav();
 });
 
+function openMobileMenu() {
+    hamburger.classList.add('open');
+    mobileMenu.classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeMobileMenu() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+}
+
 hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('open');
-    mobileMenu.classList.toggle('open');
-    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+    if (mobileMenu.classList.contains('open')) {
+        closeMobileMenu();
+    } else {
+        openMobileMenu();
+    }
 });
 
+mobileCloseBtn?.addEventListener('click', closeMobileMenu);
+
 document.querySelectorAll('.mobile-nav-item').forEach(item => {
-    item.addEventListener('click', () => {
-        hamburger.classList.remove('open');
-        mobileMenu.classList.remove('open');
-        document.body.style.overflow = '';
-    });
+    item.addEventListener('click', closeMobileMenu);
+});
+
+// Close on backdrop click (outside menu content)
+mobileMenu.addEventListener('click', (e) => {
+    if (e.target === mobileMenu) closeMobileMenu();
 });
 
 // Smooth scroll for all anchor links
@@ -113,8 +129,7 @@ function typeEffect() {
     let delay = deleting ? 45 : 95;
 
     if (!deleting && charIdx === current.length) {
-        delay = 2200;
-        deleting = true;
+        delay = 2200; deleting = true;
     } else if (deleting && charIdx === 0) {
         deleting = false;
         roleIdx  = (roleIdx + 1) % roles.length;
@@ -125,22 +140,23 @@ function typeEffect() {
 }
 
 // ─── REVEAL ON SCROLL ─────────────────────
-const revealEls = document.querySelectorAll('.reveal');
+const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
 
 const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
+    entries.forEach((entry) => {
         if (entry.isIntersecting) {
+            const delay = parseFloat(entry.target.dataset.delay || 0) * 80;
             setTimeout(() => {
                 entry.target.classList.add('visible');
-            }, 80 * (entry.target.dataset.delay || 0));
+            }, delay);
             revealObserver.unobserve(entry.target);
         }
     });
-}, { threshold: 0.12 });
+}, { threshold: 0.1 });
 
-// Add stagger delays to siblings
+// Stagger delays within grids
 document.querySelectorAll('.skills-grid, .projects-grid, .certs-grid, .about-cards, .about-stats').forEach(grid => {
-    grid.querySelectorAll('.reveal').forEach((el, i) => {
+    grid.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach((el, i) => {
         el.dataset.delay = i;
     });
 });
@@ -152,8 +168,10 @@ const skillBarObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             const bars = entry.target.querySelectorAll('.sk-bar');
-            bars.forEach(bar => {
-                bar.style.width = bar.dataset.width + '%';
+            bars.forEach((bar, i) => {
+                setTimeout(() => {
+                    bar.style.width = bar.dataset.width + '%';
+                }, i * 120);
             });
         }
     });
@@ -166,12 +184,14 @@ const counterObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.querySelectorAll('.stat-num').forEach(num => {
-                const target = parseInt(num.dataset.count);
-                let current = 0;
-                const step = Math.ceil(target / 30);
-                const timer = setInterval(() => {
+                const raw    = num.dataset.count;
+                const suffix = raw.replace(/[0-9]/g, '');
+                const target = parseInt(raw);
+                let current  = 0;
+                const step   = Math.ceil(target / 30);
+                const timer  = setInterval(() => {
                     current = Math.min(current + step, target);
-                    num.textContent = current;
+                    num.textContent = current + suffix;
                     if (current >= target) clearInterval(timer);
                 }, 50);
             });
@@ -182,12 +202,39 @@ const counterObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.about-stats').forEach(el => counterObserver.observe(el));
 
+// ─── CURSOR MAGNETIC EFFECT on social pills ──
+document.querySelectorAll('.social-pill, .cs-link, .mobile-social').forEach(el => {
+    el.addEventListener('mousemove', (e) => {
+        const rect   = el.getBoundingClientRect();
+        const cx     = rect.left + rect.width / 2;
+        const cy     = rect.top  + rect.height / 2;
+        const dx     = (e.clientX - cx) * 0.25;
+        const dy     = (e.clientY - cy) * 0.25;
+        el.style.transform = `translate(${dx}px, ${dy}px) translateY(-4px)`;
+    });
+    el.addEventListener('mouseleave', () => {
+        el.style.transform = '';
+    });
+});
+
+// ─── PARALLAX on hero blobs ───────────────
+window.addEventListener('mousemove', (e) => {
+    const x = (e.clientX / window.innerWidth  - 0.5) * 30;
+    const y = (e.clientY / window.innerHeight - 0.5) * 30;
+    const b1 = document.querySelector('.b1');
+    const b2 = document.querySelector('.b2');
+    const b3 = document.querySelector('.b3');
+    if (b1) b1.style.transform = `translate(${x * 0.6}px, ${y * 0.6}px)`;
+    if (b2) b2.style.transform = `translate(${-x * 0.4}px, ${-y * 0.4}px)`;
+    if (b3) b3.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+});
+
 // ─── CONTACT FORM ─────────────────────────
 const contactForm = document.getElementById('contactForm');
 
 contactForm?.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const btn = document.getElementById('submitBtn');
+    const btn      = document.getElementById('submitBtn');
     const original = btn.innerHTML;
 
     btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
@@ -201,7 +248,6 @@ contactForm?.addEventListener('submit', async (e) => {
             subject:    contactForm.subject.value,
             message:    contactForm.message.value
         };
-
         await emailjs.send('service_3s3vkrs', 'template_3i9kyqj', formData);
         showToast('✅ Message sent! I\'ll get back to you soon.', 'success');
         contactForm.reset();
@@ -216,7 +262,6 @@ contactForm?.addEventListener('submit', async (e) => {
 
 // ─── TOAST NOTIFICATION ──────────────────
 function showToast(msg, type = 'success') {
-    // Remove existing toast
     document.querySelector('.nk-toast')?.remove();
 
     const toast = document.createElement('div');
@@ -225,8 +270,8 @@ function showToast(msg, type = 'success') {
         position: fixed; bottom: 2rem; right: 2rem; z-index: 9999;
         padding: 1rem 1.5rem; border-radius: 14px;
         font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 500;
-        background: ${type === 'success' ? '#fff' : '#fff'};
-        color: ${type === 'success' ? '#0F1F33' : '#0F1F33'};
+        background: #fff;
+        color: #0F1F33;
         border-left: 4px solid ${type === 'success' ? '#4CAF50' : '#ef4444'};
         box-shadow: 0 8px 40px rgba(0,0,0,0.15);
         transform: translateX(120%);
@@ -236,10 +281,7 @@ function showToast(msg, type = 'success') {
     toast.textContent = msg;
     document.body.appendChild(toast);
 
-    requestAnimationFrame(() => {
-        toast.style.transform = 'translateX(0)';
-    });
-
+    requestAnimationFrame(() => { toast.style.transform = 'translateX(0)'; });
     setTimeout(() => {
         toast.style.transform = 'translateX(120%)';
         setTimeout(() => toast.remove(), 500);

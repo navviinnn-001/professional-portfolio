@@ -27,15 +27,15 @@
 <nav class="navbar" id="navbar">
     <div class="nav-inner">
         <a class="nav-logo" href="#home">NK<span class="logo-dot">.</span></a>
-        
+
         <div class="nav-links" id="navLinks">
-            <a href="#home" class="nav-item active">Home</a>
-            <a href="#about" class="nav-item">About</a>
-            <a href="#education" class="nav-item">Education</a>
-            <a href="#skills" class="nav-item">Skills</a>
-            <a href="#projects" class="nav-item">Projects</a>
+            <a href="#home"         class="nav-item active">Home</a>
+            <a href="#about"        class="nav-item">About</a>
+            <a href="#education"    class="nav-item">Education</a>
+            <a href="#skills"       class="nav-item">Skills</a>
+            <a href="#projects"     class="nav-item">Projects</a>
             <a href="#certificates" class="nav-item">Certificates</a>
-            <a href="#contact" class="nav-item">Contact</a>
+            <a href="#contact"      class="nav-item">Contact</a>
         </div>
 
         <div class="nav-actions">
@@ -49,16 +49,38 @@
     </div>
 </nav>
 
-<!-- ═══ MOBILE MENU ═══ -->
-<div class="mobile-menu" id="mobileMenu">
+<!-- ═══ MOBILE MENU — REDESIGNED ═══ -->
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation Menu">
+    <!-- Header row -->
+    <div class="mobile-menu-header">
+        <a class="mobile-menu-logo" href="#home">NK<span>.</span></a>
+        <button class="mobile-close-btn" id="mobileCloseBtn" aria-label="Close menu">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <!-- Nav links -->
     <div class="mobile-menu-inner">
-        <a href="#home" class="mobile-nav-item">Home</a>
-        <a href="#about" class="mobile-nav-item">About</a>
-        <a href="#education" class="mobile-nav-item">Education</a>
-        <a href="#skills" class="mobile-nav-item">Skills</a>
-        <a href="#projects" class="mobile-nav-item">Projects</a>
-        <a href="#certificates" class="mobile-nav-item">Certificates</a>
-        <a href="#contact" class="mobile-nav-item">Contact</a>
+        <a href="#home"         class="mobile-nav-item"><span class="nav-num">01</span><span class="nav-label">Home</span><i class="fas fa-arrow-right nav-arrow"></i></a>
+        <a href="#about"        class="mobile-nav-item"><span class="nav-num">02</span><span class="nav-label">About</span><i class="fas fa-arrow-right nav-arrow"></i></a>
+        <a href="#education"    class="mobile-nav-item"><span class="nav-num">03</span><span class="nav-label">Education</span><i class="fas fa-arrow-right nav-arrow"></i></a>
+        <a href="#skills"       class="mobile-nav-item"><span class="nav-num">04</span><span class="nav-label">Skills</span><i class="fas fa-arrow-right nav-arrow"></i></a>
+        <a href="#projects"     class="mobile-nav-item"><span class="nav-num">05</span><span class="nav-label">Projects</span><i class="fas fa-arrow-right nav-arrow"></i></a>
+        <a href="#certificates" class="mobile-nav-item"><span class="nav-num">06</span><span class="nav-label">Certificates</span><i class="fas fa-arrow-right nav-arrow"></i></a>
+        <a href="#contact"      class="mobile-nav-item"><span class="nav-num">07</span><span class="nav-label">Contact</span><i class="fas fa-arrow-right nav-arrow"></i></a>
+    </div>
+
+    <!-- Footer row -->
+    <div class="mobile-menu-footer">
+        <div class="mobile-footer-socials">
+            <a href="https://github.com/navviinnn-001" target="_blank" class="mobile-social" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://in.linkedin.com/in/navin-krishna-i-n-49640134a" target="_blank" rel="noopener noreferrer" class="mobile-social" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="mailto:naavviinn001@gmail.com" class="mobile-social" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+        <div class="mobile-footer-avail">
+            <span class="mobile-avail-dot"></span>
+            Available for hire
+        </div>
     </div>
 </div>
 
@@ -66,7 +88,6 @@
      HERO SECTION
 ═══════════════════════════════════════════ -->
 <section id="home" class="hero-section">
-    <!-- Background mesh -->
     <div class="hero-mesh">
         <div class="mesh-blob b1"></div>
         <div class="mesh-blob b2"></div>
@@ -81,30 +102,17 @@
                 <div class="photo-ring-mid">
                     <div class="photo-ring-inner">
                         <div class="photo-circle">
-                            <img src="assets/images/profile.jpg" 
+                            <img src="assets/images/profile.jpg"
                                  alt="Navin Krishna"
                                  onerror="this.src='https://ui-avatars.com/api/?name=Navin+Krishna&size=500&background=0D8ABC&color=fff&bold=true&font-size=0.33'">
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Floating badges around photo -->
-            <div class="float-badge badge-tl">
-                <i class="fas fa-code"></i>
-                <span>Dev</span>
-            </div>
-            <div class="float-badge badge-tr">
-                <i class="fas fa-brain"></i>
-                <span>AI</span>
-            </div>
-            <div class="float-badge badge-bl">
-                <i class="fas fa-chess"></i>
-                <span>FIDE</span>
-            </div>
-            <div class="float-badge badge-br">
-                <i class="fas fa-rocket"></i>
-                <span>Open</span>
-            </div>
+            <div class="float-badge badge-tl"><i class="fas fa-code"></i><span>Dev</span></div>
+            <div class="float-badge badge-tr"><i class="fas fa-brain"></i><span>AI</span></div>
+            <div class="float-badge badge-bl"><i class="fas fa-chess"></i><span>FIDE</span></div>
+            <div class="float-badge badge-br"><i class="fas fa-trophy"></i><span>1st Prize</span></div>
         </div>
 
         <!-- Text column -->
@@ -118,7 +126,7 @@
                 <span id="typedText"></span><span class="type-cursor">|</span>
             </div>
             <p class="hero-desc">B.Tech CSE (AI & Data Science) student building innovative software solutions that bridge intelligent systems and elegant user experiences.</p>
-            
+
             <div class="hero-cta">
                 <button class="btn-primary" data-bs-toggle="modal" data-bs-target="#resumeModal">
                     <i class="fas fa-file-alt"></i> View Resume
@@ -129,22 +137,13 @@
             </div>
 
             <div class="hero-socials">
-                <a href="https://github.com/navviinnn-001" target="_blank" class="social-pill" aria-label="GitHub">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://in.linkedin.com/in/navin-krishna-i-n-49640134a" target="_blank" rel="noopener noreferrer" class="social-pill" aria-label="LinkedIn">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
-                <a href="mailto:naavviinn001@gmail.com" class="social-pill" aria-label="Email">
-                    <i class="fas fa-envelope"></i>
-                </a>
-                <a href="tel:+919605434119" class="social-pill" aria-label="Phone">
-                    <i class="fas fa-phone"></i>
-                </a>
+                <a href="https://github.com/navviinnn-001" target="_blank" class="social-pill" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://in.linkedin.com/in/navin-krishna-i-n-49640134a" target="_blank" rel="noopener noreferrer" class="social-pill" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="mailto:naavviinn001@gmail.com" class="social-pill" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                <a href="tel:+919605434119" class="social-pill" aria-label="Phone"><i class="fas fa-phone"></i></a>
             </div>
         </div>
     </div>
-
 </section>
 
 <!-- ═══════════════════════════════════════════
@@ -156,61 +155,37 @@
         <h2 class="sec-title reveal">The <span class="accent">Person</span> Behind the Code</h2>
 
         <div class="about-grid">
-            <div class="about-text reveal">
+            <div class="about-text reveal-left">
                 <p class="about-lead">I'm a passionate B.Tech student specializing in <strong>Computer Science & Engineering with AI & Data Science</strong> at Mentor Academy for Design, Entrepreneurship, Innovation & Technology (MADIT).</p>
                 <p>I build innovative solutions that solve real-world problems. With hands-on experience through internships and personal projects, I bring a strong foundation in Python, Web Technologies, and Data Structures.</p>
                 <p>Beyond code, I'm a <strong>FIDE-rated chess player</strong> — which has shaped how I think strategically, plan multiple steps ahead, and stay calm under pressure.</p>
             </div>
 
-            <div class="about-cards reveal">
+            <div class="about-cards reveal-right">
                 <div class="info-card">
                     <div class="ic-icon"><i class="fas fa-map-marker-alt"></i></div>
-                    <div class="ic-content">
-                        <span class="ic-label">Location</span>
-                        <span class="ic-value">Tirur, Malappuram, Kerala</span>
-                    </div>
+                    <div class="ic-content"><span class="ic-label">Location</span><span class="ic-value">Tirur, Malappuram, Kerala</span></div>
                 </div>
                 <div class="info-card">
                     <div class="ic-icon"><i class="fas fa-envelope"></i></div>
-                    <div class="ic-content">
-                        <span class="ic-label">Email</span>
-                        <span class="ic-value">naavviinn001@gmail.com</span>
-                    </div>
+                    <div class="ic-content"><span class="ic-label">Email</span><span class="ic-value">naavviinn001@gmail.com</span></div>
                 </div>
                 <div class="info-card">
                     <div class="ic-icon"><i class="fas fa-phone"></i></div>
-                    <div class="ic-content">
-                        <span class="ic-label">Phone</span>
-                        <span class="ic-value">+91 96054 34119</span>
-                    </div>
+                    <div class="ic-content"><span class="ic-label">Phone</span><span class="ic-value">+91 96054 34119</span></div>
                 </div>
                 <div class="info-card">
                     <div class="ic-icon"><i class="fas fa-chess-knight"></i></div>
-                    <div class="ic-content">
-                        <span class="ic-label">Achievement</span>
-                        <span class="ic-value">FIDE-Rated Chess Player</span>
-                    </div>
+                    <div class="ic-content"><span class="ic-label">Achievement</span><span class="ic-value">FIDE-Rated Chess Player</span></div>
                 </div>
             </div>
         </div>
 
         <div class="about-stats reveal">
-            <div class="stat-box">
-                <div class="stat-num" data-count="10+">0</div>
-                <div class="stat-lbl">Projects Built</div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-num" data-count="6+">0</div>
-                <div class="stat-lbl">Technologies</div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-num" data-count="3+">0</div>
-                <div class="stat-lbl">Certifications</div>
-            </div>
-            <div class="stat-box">
-                <div class="stat-num" data-count="1">0</div>
-                <div class="stat-lbl">Internship</div>
-            </div>
+            <div class="stat-box"><div class="stat-num" data-count="10">0</div><div class="stat-lbl">Projects Built</div></div>
+            <div class="stat-box"><div class="stat-num" data-count="6">0</div><div class="stat-lbl">Technologies</div></div>
+            <div class="stat-box"><div class="stat-num" data-count="3">0</div><div class="stat-lbl">Certifications</div></div>
+            <div class="stat-box"><div class="stat-num" data-count="1">0</div><div class="stat-lbl">Internship</div></div>
         </div>
     </div>
 </section>
@@ -225,42 +200,29 @@
 
         <div class="timeline">
             <div class="tl-item reveal">
-                <div class="tl-marker">
-                    <div class="tl-dot"><i class="fas fa-graduation-cap"></i></div>
-                    <div class="tl-line"></div>
-                </div>
+                <div class="tl-marker"><div class="tl-dot"><i class="fas fa-graduation-cap"></i></div></div>
                 <div class="tl-card">
                     <div class="tl-badge current">Currently Pursuing</div>
                     <h3 class="tl-title">B.Tech — CSE (AI & Data Science)</h3>
                     <p class="tl-inst">Mentor Academy for Design, Entrepreneurship, Innovation & Technology</p>
                     <p class="tl-desc">Specializing in Data Structures, OOP, Web Development, and DBMS with a strong focus on AI and Data Science applications.</p>
-                    <div class="tl-tags">
-                        <span>Data Structures</span><span>OOPs</span><span>Web Dev</span><span>DBMS</span><span>AI/ML</span>
-                    </div>
+                    <div class="tl-tags"><span>Data Structures</span><span>OOPs</span><span>Web Dev</span><span>DBMS</span><span>AI/ML</span></div>
                 </div>
             </div>
 
             <div class="tl-item reveal">
-                <div class="tl-marker">
-                    <div class="tl-dot"><i class="fas fa-briefcase"></i></div>
-                    <div class="tl-line"></div>
-                </div>
+                <div class="tl-marker"><div class="tl-dot"><i class="fas fa-briefcase"></i></div></div>
                 <div class="tl-card">
                     <div class="tl-badge">1 Month</div>
                     <h3 class="tl-title">Software Development Intern</h3>
                     <p class="tl-inst">Litmus7</p>
                     <p class="tl-desc">Collaborated with the development team on enterprise-grade software workflows and agile methodologies. Assisted in code debugging and testing phases while gaining hands-on exposure to corporate IT practices.</p>
-                    <div class="tl-tags">
-                        <span>Agile</span><span>Debugging</span><span>Testing</span><span>Enterprise Software</span>
-                    </div>
+                    <div class="tl-tags"><span>Agile</span><span>Debugging</span><span>Testing</span><span>Enterprise Software</span></div>
                 </div>
             </div>
 
             <div class="tl-item reveal">
-                <div class="tl-marker">
-                    <div class="tl-dot"><i class="fas fa-school"></i></div>
-                    <div class="tl-line"></div>
-                </div>
+                <div class="tl-marker"><div class="tl-dot"><i class="fas fa-school"></i></div></div>
                 <div class="tl-card">
                     <div class="tl-badge done">Completed</div>
                     <h3 class="tl-title">Higher Secondary — Science</h3>
@@ -269,9 +231,7 @@
             </div>
 
             <div class="tl-item reveal">
-                <div class="tl-marker">
-                    <div class="tl-dot"><i class="fas fa-book"></i></div>
-                </div>
+                <div class="tl-marker"><div class="tl-dot"><i class="fas fa-book"></i></div></div>
                 <div class="tl-card">
                     <div class="tl-badge done">Completed</div>
                     <h3 class="tl-title">Secondary School</h3>
@@ -292,87 +252,40 @@
 
         <div class="skills-grid">
             <div class="skill-card reveal">
-                <div class="sk-header">
-                    <div class="sk-icon"><i class="fas fa-code"></i></div>
-                    <h3>Programming</h3>
-                </div>
+                <div class="sk-header"><div class="sk-icon"><i class="fas fa-code"></i></div><h3>Programming</h3></div>
                 <p>Strong foundation in multiple languages</p>
-                <div class="sk-tags">
-                    <span>Python</span><span>C</span><span>JavaScript</span>
-                </div>
-                <div class="sk-level">
-                    <div class="sk-bar" data-width="85"></div>
-                </div>
+                <div class="sk-tags"><span>Python</span><span>C</span><span>JavaScript</span></div>
+                <div class="sk-level"><div class="sk-bar" data-width="85"></div></div>
             </div>
-
             <div class="skill-card reveal">
-                <div class="sk-header">
-                    <div class="sk-icon"><i class="fas fa-globe"></i></div>
-                    <h3>Web Development</h3>
-                </div>
+                <div class="sk-header"><div class="sk-icon"><i class="fas fa-globe"></i></div><h3>Web Development</h3></div>
                 <p>Modern web technologies & frameworks</p>
-                <div class="sk-tags">
-                    <span>HTML5</span><span>CSS3</span><span>React</span><span>REST API</span>
-                </div>
-                <div class="sk-level">
-                    <div class="sk-bar" data-width="80"></div>
-                </div>
+                <div class="sk-tags"><span>HTML5</span><span>CSS3</span><span>React</span><span>REST API</span></div>
+                <div class="sk-level"><div class="sk-bar" data-width="80"></div></div>
             </div>
-
             <div class="skill-card reveal">
-                <div class="sk-header">
-                    <div class="sk-icon"><i class="fas fa-tools"></i></div>
-                    <h3>Dev Tools</h3>
-                </div>
+                <div class="sk-header"><div class="sk-icon"><i class="fas fa-tools"></i></div><h3>Dev Tools</h3></div>
                 <p>Professional development environment</p>
-                <div class="sk-tags">
-                    <span>Git</span><span>GitHub</span><span>VS Code</span><span>Linux</span>
-                </div>
-                <div class="sk-level">
-                    <div class="sk-bar" data-width="78"></div>
-                </div>
+                <div class="sk-tags"><span>Git</span><span>GitHub</span><span>VS Code</span><span>Linux</span></div>
+                <div class="sk-level"><div class="sk-bar" data-width="78"></div></div>
             </div>
-
             <div class="skill-card reveal">
-                <div class="sk-header">
-                    <div class="sk-icon"><i class="fas fa-brain"></i></div>
-                    <h3>Core CS Concepts</h3>
-                </div>
+                <div class="sk-header"><div class="sk-icon"><i class="fas fa-brain"></i></div><h3>Core CS Concepts</h3></div>
                 <p>Computer science fundamentals</p>
-                <div class="sk-tags">
-                    <span>DSA</span><span>OOPs</span><span>Algorithms</span>
-                </div>
-                <div class="sk-level">
-                    <div class="sk-bar" data-width="82"></div>
-                </div>
+                <div class="sk-tags"><span>DSA</span><span>OOPs</span><span>Algorithms</span></div>
+                <div class="sk-level"><div class="sk-bar" data-width="82"></div></div>
             </div>
-
             <div class="skill-card reveal">
-                <div class="sk-header">
-                    <div class="sk-icon"><i class="fas fa-paint-brush"></i></div>
-                    <h3>UI Development</h3>
-                </div>
+                <div class="sk-header"><div class="sk-icon"><i class="fas fa-paint-brush"></i></div><h3>UI Development</h3></div>
                 <p>Creating clean user interfaces</p>
-                <div class="sk-tags">
-                    <span>Tkinter</span><span>Bootstrap</span><span>Responsive</span>
-                </div>
-                <div class="sk-level">
-                    <div class="sk-bar" data-width="75"></div>
-                </div>
+                <div class="sk-tags"><span>Tkinter</span><span>Bootstrap</span><span>Responsive</span></div>
+                <div class="sk-level"><div class="sk-bar" data-width="75"></div></div>
             </div>
-
             <div class="skill-card reveal">
-                <div class="sk-header">
-                    <div class="sk-icon"><i class="fas fa-database"></i></div>
-                    <h3>Databases</h3>
-                </div>
+                <div class="sk-header"><div class="sk-icon"><i class="fas fa-database"></i></div><h3>Databases</h3></div>
                 <p>Data storage & management</p>
-                <div class="sk-tags">
-                    <span>DBMS</span><span>SQL</span>
-                </div>
-                <div class="sk-level">
-                    <div class="sk-bar" data-width="70"></div>
-                </div>
+                <div class="sk-tags"><span>DBMS</span><span>SQL</span></div>
+                <div class="sk-level"><div class="sk-bar" data-width="70"></div></div>
             </div>
         </div>
     </div>
@@ -387,6 +300,35 @@
         <h2 class="sec-title reveal">Featured <span class="accent">Projects</span></h2>
 
         <div class="projects-grid">
+
+            <!-- ══ HACKATHON WINNER — FULL WIDTH ══ -->
+            <div class="proj-card hackathon-winner reveal">
+                <div class="proj-img" style="--proj-color: #7C3AED">
+                    <div class="proj-icon-wrap"><i class="fas fa-graduation-cap"></i></div>
+                    <div class="proj-hover">
+                        <a href="https://github.com/navviinnn-001/AI-Powered-LMS.git" target="_blank" class="proj-gh-btn">
+                            <i class="fab fa-github"></i> View on GitHub
+                        </a>
+                    </div>
+                </div>
+                <div class="proj-body">
+                    <div class="proj-meta">
+                        <div class="winner-badge"><i class="fas fa-trophy"></i> 1st Prize — Hackathon</div>
+                        <span class="proj-status done">Completed</span>
+                    </div>
+                    <h3>AI-Powered Learning Management System</h3>
+                    <p>Designed and developed an intelligent Learning Management System powered by Artificial Intelligence, built to personalise learning paths, automate content recommendations, and enhance the overall educational experience for students.</p>
+                    <div class="proj-techs">
+                        <span>AI / ML</span><span>LMS Platform</span><span>Personalised Learning</span><span>Python</span><span>Web Application</span>
+                    </div>
+                    <div class="proj-award-strip">
+                        <i class="fas fa-medal"></i>
+                        <span><strong>Awarded First Prize</strong> at a college-level hackathon — recognised for innovative use of AI in education technology and seamless user experience.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Regular projects -->
             <div class="proj-card reveal">
                 <div class="proj-img" style="--proj-color: #0D8ABC">
                     <div class="proj-icon-wrap"><i class="fas fa-bus-alt"></i></div>
@@ -397,14 +339,10 @@
                     </div>
                 </div>
                 <div class="proj-body">
-                    <div class="proj-meta">
-                        <span class="proj-status ongoing">In Progress</span>
-                    </div>
+                    <div class="proj-meta"><span class="proj-status ongoing">In Progress</span></div>
                     <h3>Smart Public Transport & Travel App</h3>
                     <p>Intelligent transport solution featuring real-time GPS tracking, online ticketing, and smart route planning to digitize public transit services.</p>
-                    <div class="proj-techs">
-                        <span>React</span><span>GPS API</span><span>Real-time</span>
-                    </div>
+                    <div class="proj-techs"><span>React</span><span>GPS API</span><span>Real-time</span></div>
                 </div>
             </div>
 
@@ -418,14 +356,10 @@
                     </div>
                 </div>
                 <div class="proj-body">
-                    <div class="proj-meta">
-                        <span class="proj-status done">Completed</span>
-                    </div>
+                    <div class="proj-meta"><span class="proj-status done">Completed</span></div>
                     <h3>TaskFlow: Task Management App</h3>
                     <p>CRUD-based To-Do application allowing users to create, update, and track tasks with local state management and a clean, intuitive UI.</p>
-                    <div class="proj-techs">
-                        <span>JavaScript</span><span>React</span><span>CRUD</span>
-                    </div>
+                    <div class="proj-techs"><span>JavaScript</span><span>React</span><span>CRUD</span></div>
                 </div>
             </div>
 
@@ -439,14 +373,10 @@
                     </div>
                 </div>
                 <div class="proj-body">
-                    <div class="proj-meta">
-                        <span class="proj-status done">Completed</span>
-                    </div>
+                    <div class="proj-meta"><span class="proj-status done">Completed</span></div>
                     <h3>Weather Forecasting Application</h3>
                     <p>Real-time weather tool integrating third-party APIs to fetch and display live climate data for any user-specified location worldwide.</p>
-                    <div class="proj-techs">
-                        <span>JavaScript</span><span>Weather API</span><span>Real-time</span>
-                    </div>
+                    <div class="proj-techs"><span>JavaScript</span><span>Weather API</span><span>Real-time</span></div>
                 </div>
             </div>
 
@@ -460,16 +390,13 @@
                     </div>
                 </div>
                 <div class="proj-body">
-                    <div class="proj-meta">
-                        <span class="proj-status done">Completed</span>
-                    </div>
+                    <div class="proj-meta"><span class="proj-status done">Completed</span></div>
                     <h3>Hangman Game (Python GUI)</h3>
                     <p>Interactive desktop game using Python and Tkinter, implementing logic for string manipulation and event handling with a polished GUI.</p>
-                    <div class="proj-techs">
-                        <span>Python</span><span>Tkinter</span><span>GUI</span>
-                    </div>
+                    <div class="proj-techs"><span>Python</span><span>Tkinter</span><span>GUI</span></div>
                 </div>
             </div>
+
         </div>
     </div>
 </section>
@@ -491,9 +418,7 @@
                     <p>Software Development Certificate</p>
                     <div class="cert-issuer"><i class="fas fa-building"></i> Litmus7</div>
                 </div>
-                <div class="cert-action">
-                    <span>View Certificate</span> <i class="fas fa-arrow-right"></i>
-                </div>
+                <div class="cert-action"><span>View Certificate</span> <i class="fas fa-arrow-right"></i></div>
             </div>
 
             <div class="cert-card reveal" data-bs-toggle="modal" data-bs-target="#certModal2">
@@ -504,9 +429,7 @@
                     <p>Workshop Participation Certificate</p>
                     <div class="cert-issuer"><i class="fas fa-university"></i> Workshop</div>
                 </div>
-                <div class="cert-action">
-                    <span>View Certificate</span> <i class="fas fa-arrow-right"></i>
-                </div>
+                <div class="cert-action"><span>View Certificate</span> <i class="fas fa-arrow-right"></i></div>
             </div>
 
             <div class="cert-card reveal achievement-card">
@@ -517,9 +440,7 @@
                     <p>State-Level Competitor</p>
                     <div class="cert-issuer"><i class="fas fa-trophy"></i> FIDE Rated</div>
                 </div>
-                <div class="cert-action achievement-badge">
-                    <i class="fas fa-medal"></i> Achievement
-                </div>
+                <div class="cert-action achievement-badge"><i class="fas fa-medal"></i> Achievement</div>
             </div>
 
             <div class="cert-card reveal" data-bs-toggle="modal" data-bs-target="#certModal3">
@@ -527,12 +448,10 @@
                 <div class="cert-icon-wrap hackathon-icon"><i class="fas fa-laptop-code"></i></div>
                 <div class="cert-content">
                     <h3>Hackathon Certificate</h3>
-                    <p>Participation / Achievement</p>
-                    <div class="cert-issuer"><i class="fas fa-code-branch"></i> Hackathon</div>
+                    <p>First Prize — AI-Powered LMS</p>
+                    <div class="cert-issuer"><i class="fas fa-code-branch"></i> College Hackathon</div>
                 </div>
-                <div class="cert-action">
-                    <span>View Certificate</span> <i class="fas fa-arrow-right"></i>
-                </div>
+                <div class="cert-action"><span>View Certificate</span> <i class="fas fa-arrow-right"></i></div>
             </div>
         </div>
     </div>
@@ -547,49 +466,34 @@
         <h2 class="sec-title reveal">Let's <span class="accent">Work Together</span></h2>
 
         <div class="contact-grid">
-            <div class="contact-left reveal">
+            <div class="contact-left reveal-left">
                 <p class="contact-intro">I'm always open to new opportunities, collaborations, or just a friendly conversation. Feel free to reach out!</p>
-                
+
                 <div class="contact-items">
                     <a href="mailto:naavviinn001@gmail.com" class="contact-item">
                         <div class="ci-icon"><i class="fas fa-envelope"></i></div>
-                        <div class="ci-text">
-                            <span>Email</span>
-                            <strong>naavviinn001@gmail.com</strong>
-                        </div>
+                        <div class="ci-text"><span>Email</span><strong>naavviinn001@gmail.com</strong></div>
                         <i class="fas fa-external-link-alt ci-arrow"></i>
                     </a>
                     <a href="tel:+919605434119" class="contact-item">
                         <div class="ci-icon"><i class="fas fa-phone"></i></div>
-                        <div class="ci-text">
-                            <span>Phone</span>
-                            <strong>+91 96054 34119</strong>
-                        </div>
+                        <div class="ci-text"><span>Phone</span><strong>+91 96054 34119</strong></div>
                         <i class="fas fa-external-link-alt ci-arrow"></i>
                     </a>
                     <div class="contact-item no-link">
                         <div class="ci-icon"><i class="fas fa-map-marker-alt"></i></div>
-                        <div class="ci-text">
-                            <span>Location</span>
-                            <strong>Tirur, Malappuram, Kerala, India</strong>
-                        </div>
+                        <div class="ci-text"><span>Location</span><strong>Tirur, Malappuram, Kerala, India</strong></div>
                     </div>
                 </div>
 
                 <div class="contact-socials">
-                    <a href="https://github.com/navviinnn-001" target="_blank" class="cs-link">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://in.linkedin.com/in/navin-krishna-i-n-49640134a" target="_blank" rel="noopener noreferrer" class="cs-link">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="mailto:naavviinn001@gmail.com" class="cs-link">
-                        <i class="fas fa-envelope"></i>
-                    </a>
+                    <a href="https://github.com/navviinnn-001" target="_blank" class="cs-link"><i class="fab fa-github"></i></a>
+                    <a href="https://in.linkedin.com/in/navin-krishna-i-n-49640134a" target="_blank" rel="noopener noreferrer" class="cs-link"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="mailto:naavviinn001@gmail.com" class="cs-link"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
 
-            <div class="contact-right reveal">
+            <div class="contact-right reveal-right">
                 <form id="contactForm" class="contact-form">
                     <div class="cf-row">
                         <div class="cf-group">
@@ -622,7 +526,7 @@
 <footer class="footer">
     <div class="footer-inner">
         <div class="footer-logo">NK<span>.</span></div>
-        <p>© 2026 Navin Krishna </p>
+        <p>© 2026 Navin Krishna</p>
         <div class="footer-links">
             <a href="#home">Home</a>
             <a href="#about">About</a>
@@ -636,15 +540,11 @@
     <div class="modal-dialog modal-xl modal-dialog-centered">
         <div class="modal-content nk-modal">
             <div class="modal-header nk-modal-header">
-                <div class="modal-title-wrap">
-                    <i class="fas fa-file-alt"></i>
-                    <span>Navin Krishna — Resume</span>
-                </div>
+                <div class="modal-title-wrap"><i class="fas fa-file-alt"></i><span>Navin Krishna — Resume</span></div>
                 <button type="button" class="nk-close" data-bs-dismiss="modal"><i class="fas fa-times"></i></button>
             </div>
             <div class="modal-body nk-modal-body">
-                <iframe src="assets/documents/Navin_Krishna_Resume.pdf#toolbar=1" 
-                        style="width:100%;height:620px;border:none;border-radius:12px;"></iframe>
+                <iframe src="assets/documents/Navin_Krishna_Resume.pdf#toolbar=1" style="width:100%;height:620px;border:none;border-radius:12px;"></iframe>
                 <div class="modal-actions">
                     <a href="assets/documents/Navin_Krishna_Resume.pdf" download="Navin_Krishna_Resume.pdf" class="btn-primary">
                         <i class="fas fa-download"></i> Download Resume
@@ -660,20 +560,12 @@
     <div class="modal-dialog modal-xl modal-dialog-centered">
         <div class="modal-content nk-modal">
             <div class="modal-header nk-modal-header">
-                <div class="modal-title-wrap">
-                    <i class="fas fa-certificate"></i>
-                    <span>Litmus7 — Internship Certificate</span>
-                </div>
+                <div class="modal-title-wrap"><i class="fas fa-certificate"></i><span>Litmus7 — Internship Certificate</span></div>
                 <button type="button" class="nk-close" data-bs-dismiss="modal"><i class="fas fa-times"></i></button>
             </div>
             <div class="modal-body nk-modal-body">
-                <iframe src="assets/documents/Litmus7_Certificate.pdf#toolbar=1"
-                        style="width:100%;height:620px;border:none;border-radius:12px;"></iframe>
-                <div class="modal-actions">
-                    <a href="assets/documents/Litmus7_Certificate.pdf" download class="btn-primary">
-                        <i class="fas fa-download"></i> Download
-                    </a>
-                </div>
+                <iframe src="assets/documents/Litmus7_Certificate.pdf#toolbar=1" style="width:100%;height:620px;border:none;border-radius:12px;"></iframe>
+                <div class="modal-actions"><a href="assets/documents/Litmus7_Certificate.pdf" download class="btn-primary"><i class="fas fa-download"></i> Download</a></div>
             </div>
         </div>
     </div>
@@ -684,44 +576,28 @@
     <div class="modal-dialog modal-xl modal-dialog-centered">
         <div class="modal-content nk-modal">
             <div class="modal-header nk-modal-header">
-                <div class="modal-title-wrap">
-                    <i class="fas fa-microchip"></i>
-                    <span>IoT & 5G Technology Certificate</span>
-                </div>
+                <div class="modal-title-wrap"><i class="fas fa-microchip"></i><span>IoT & 5G Technology Certificate</span></div>
                 <button type="button" class="nk-close" data-bs-dismiss="modal"><i class="fas fa-times"></i></button>
             </div>
             <div class="modal-body nk-modal-body">
-                <iframe src="assets/documents/IoT_5G_Certificate.pdf#toolbar=1"
-                        style="width:100%;height:620px;border:none;border-radius:12px;"></iframe>
-                <div class="modal-actions">
-                    <a href="assets/documents/IoT_5G_Certificate.pdf" download class="btn-primary">
-                        <i class="fas fa-download"></i> Download
-                    </a>
-                </div>
+                <iframe src="assets/documents/IoT_5G_Certificate.pdf#toolbar=1" style="width:100%;height:620px;border:none;border-radius:12px;"></iframe>
+                <div class="modal-actions"><a href="assets/documents/IoT_5G_Certificate.pdf" download class="btn-primary"><i class="fas fa-download"></i> Download</a></div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- ═══ CERT MODAL 3 — HACKATHON ═══ -->
+<!-- ═══ CERT MODAL 3 ═══ -->
 <div class="modal fade" id="certModal3" tabindex="-1">
     <div class="modal-dialog modal-xl modal-dialog-centered">
         <div class="modal-content nk-modal">
             <div class="modal-header nk-modal-header">
-                <div class="modal-title-wrap">
-                    <i class="fas fa-laptop-code"></i>
-                    <span>Hackathon Certificate</span>
-                </div>
+                <div class="modal-title-wrap"><i class="fas fa-laptop-code"></i><span>Hackathon Certificate — AI-Powered LMS</span></div>
                 <button type="button" class="nk-close" data-bs-dismiss="modal"><i class="fas fa-times"></i></button>
             </div>
             <div class="modal-body nk-modal-body">
-                <iframe src="assets/documents/Hackathon_Certificate.pdf#toolbar=1"
-                        style="width:100%;height:620px;border:none;border-radius:12px;"></iframe>
-                <div class="modal-actions">
-                    <a href="assets/documents/Hackathon_Certificate.pdf" download class="btn-primary">
-                        <i class="fas fa-download"></i> Download
-                    </a>
-                </div>
+                <iframe src="assets/documents/Hackathon_Certificate.pdf#toolbar=1" style="width:100%;height:620px;border:none;border-radius:12px;"></iframe>
+                <div class="modal-actions"><a href="assets/documents/Hackathon_Certificate.pdf" download class="btn-primary"><i class="fas fa-download"></i> Download</a></div>
             </div>
         </div>
     </div>
